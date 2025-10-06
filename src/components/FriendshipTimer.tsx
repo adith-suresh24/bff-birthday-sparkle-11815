@@ -12,8 +12,8 @@ interface TimeElapsed {
 }
 
 const FriendshipTimer = () => {
-  // Set your friendship start date here (year, month-1, day)
-  const friendshipStartDate = new Date(2020, 0, 1); // January 1, 2020
+  // Set the birthday date here (year, month-1, day)
+  const birthdayDate = new Date(2000, 0, 1); // January 1, 2000 - Change this to actual birthday
   
   const [timeElapsed, setTimeElapsed] = useState<TimeElapsed>({
     years: 0,
@@ -27,17 +27,17 @@ const FriendshipTimer = () => {
   useEffect(() => {
     const calculateTimeElapsed = () => {
       const now = new Date();
-      const diff = now.getTime() - friendshipStartDate.getTime();
+      const diff = now.getTime() - birthdayDate.getTime();
       
-      const seconds = Math.floor(diff / 1000);
-      const minutes = Math.floor(seconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const days = Math.floor(hours / 24);
+      const totalSeconds = Math.floor(diff / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
       
       // Calculate years, months, days more accurately
-      let years = now.getFullYear() - friendshipStartDate.getFullYear();
-      let months = now.getMonth() - friendshipStartDate.getMonth();
-      let remainingDays = now.getDate() - friendshipStartDate.getDate();
+      let years = now.getFullYear() - birthdayDate.getFullYear();
+      let months = now.getMonth() - birthdayDate.getMonth();
+      let remainingDays = now.getDate() - birthdayDate.getDate();
       
       if (remainingDays < 0) {
         months--;
@@ -50,13 +50,18 @@ const FriendshipTimer = () => {
         months += 12;
       }
       
+      // Calculate remaining hours, minutes, seconds
+      const remainingHours = totalHours % 24;
+      const remainingMinutes = totalMinutes % 60;
+      const remainingSeconds = totalSeconds % 60;
+      
       setTimeElapsed({
         years,
         months,
         days: remainingDays,
-        hours: now.getHours(),
-        minutes: now.getMinutes(),
-        seconds: now.getSeconds(),
+        hours: remainingHours,
+        minutes: remainingMinutes,
+        seconds: remainingSeconds,
       });
     };
 
@@ -86,11 +91,11 @@ const FriendshipTimer = () => {
         </div>
         
         <h3 className="text-2xl md:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          Our Friendship Journey
+          You've Been Alive For...
         </h3>
         
         <p className="text-sm text-muted-foreground">
-          Time we've been best friends
+          Counting every precious moment
         </p>
 
         <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 mt-6">
@@ -103,7 +108,7 @@ const FriendshipTimer = () => {
         </div>
 
         <p className="text-lg font-semibold text-primary mt-6">
-          Every second with you is precious! 💝
+          And the clock keeps ticking... Happy Birthday! 🎂
         </p>
       </div>
     </Card>
