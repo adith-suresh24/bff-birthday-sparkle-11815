@@ -72,33 +72,33 @@ const FriendshipTimer = () => {
   }, []);
 
   const TimeUnit = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center px-4 py-3 bg-primary/10 rounded-xl backdrop-blur-sm border border-primary/20 hover:scale-105 transition-transform">
-      <div className="text-3xl md:text-4xl font-bold text-primary tabular-nums">
+    <div className="flex flex-col items-center px-2 sm:px-4 py-2 sm:py-3 bg-primary/10 rounded-xl backdrop-blur-sm border border-primary/20 hover:scale-105 transition-transform">
+      <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary tabular-nums">
         {value.toString().padStart(2, '0')}
       </div>
-      <div className="text-xs md:text-sm text-muted-foreground mt-1 font-medium">
+      <div className="text-[10px] sm:text-xs md:text-sm text-muted-foreground mt-1 font-medium">
         {label}
       </div>
     </div>
   );
 
   return (
-    <Card className="p-6 md:p-8 bg-card/80 backdrop-blur-sm border-2 border-primary/20 shadow-glow animate-fadeInUp">
-      <div className="text-center space-y-6">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <Clock className="w-8 h-8 text-primary animate-pulse" />
-          <Heart className="w-6 h-6 text-accent fill-accent" />
+    <Card className="p-4 sm:p-6 md:p-8 bg-card/80 backdrop-blur-sm border-2 border-primary/20 shadow-glow animate-fadeInUp">
+      <div className="text-center space-y-4 sm:space-y-6">
+        <div className="flex items-center justify-center gap-2 mb-2 sm:mb-4">
+          <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-primary animate-pulse" />
+          <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-accent fill-accent" />
         </div>
         
-        <h3 className="text-2xl md:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
           You've Been Alive For...
         </h3>
         
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           Counting every precious moment
         </p>
 
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 mt-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6">
           <TimeUnit value={timeElapsed.years} label="Years" />
           <TimeUnit value={timeElapsed.months} label="Months" />
           <TimeUnit value={timeElapsed.days} label="Days" />
@@ -107,7 +107,7 @@ const FriendshipTimer = () => {
           <TimeUnit value={timeElapsed.seconds} label="Seconds" />
         </div>
 
-        <p className="text-lg font-semibold text-primary mt-6">
+        <p className="text-sm sm:text-base md:text-lg font-semibold text-primary mt-4 sm:mt-6 px-4">
           And the clock keeps ticking... Happy Birthday! 🎂
         </p>
       </div>
